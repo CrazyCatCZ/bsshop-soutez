@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BsSnake.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:BsSnake.Contracts.BoardDto">
+            <summary>
+            Informace o hrací ploše.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.BoardDto.Height">
+            <summary>
+            Výška hrací plochy.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.BoardDto.Width">
+            <summary>
+            Šířka hrací plochy.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.BoardDto.Food">
+            <summary>
+            Informace o políčkách s jídlem.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.BoardDto.Obstacles">
+            <summary>
+            Informace o políčkách s překážkami.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.BoardDto.Snakes">
+            <summary>
+            Informace o všech hadech na hrací ploše.
+            Jsou zde i hadi hráčů, kteří již zemřeli.
+            Je zde i had aktuálního hráče.
+            </summary>
+        </member>
+        <member name="T:BsSnake.Contracts.CoordinateDto">
+            <summary>
+            Souřadnice na hrací ploše.
+            Pozice (0,0) reprezentuje levý spodní roh.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.CoordinateDto.X">
+            <summary>
+            Pozice x.
+            Počítáno od 0.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.CoordinateDto.Y">
+            <summary>
+            Pozice y.
+            Počítáno od 0.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Contracts.CoordinateDto.#ctor(System.Int32,System.Int32)">
+            <summary> ctor. </summary>
+            <param name="x"><inheritdoc cref="P:BsSnake.Contracts.CoordinateDto.X"/></param>
+            <param name="y"><inheritdoc cref="P:BsSnake.Contracts.CoordinateDto.Y"/></param>
+        </member>
+        <member name="T:BsSnake.Contracts.Direction">
+            <summary>
+            Směr hada.
+            </summary>
+        </member>
+        <member name="F:BsSnake.Contracts.Direction.Right">
+            <summary>
+            Vpravo.
+            </summary>
+        </member>
+        <member name="F:BsSnake.Contracts.Direction.Left">
+            <summary>
+            Vlevo.
+            </summary>
+        </member>
+        <member name="F:BsSnake.Contracts.Direction.Up">
+            <summary>
+            Nahoru.
+            </summary>
+        </member>
+        <member name="F:BsSnake.Contracts.Direction.Down">
+            <summary>
+            Dolu.
+            </summary>
+        </member>
+        <member name="T:BsSnake.Contracts.GameDto">
+            <summary>
+            Obsahuje všechny informace o aktuálním stavu hry.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.GameDto.Board">
+            <summary>
+            Obsahuje informace o hrací ploše.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.GameDto.You">
+            <summary>
+            Obsahuje informaci o hadu hráče.
+            Ideální by bylo mít objekt GameDto rozdělen na dvě části jednu bez vlastnosti You a druhou s vlastností You. Tato varianta je však kompromis mezi jednoduchostí a přehledností.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.GameDto.Iteration">
+            <summary>
+            Aktuální iterace hry.
+            </summary>
+        </member>
+        <member name="T:BsSnake.Contracts.ResponseDto">
+            <summary>
+            Odpověď hada v aktuální iteraci.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.ResponseDto.Direction">
+            <summary>
+            Směr, kterým se má had vydat.
+            </summary>
+        </member>
+        <member name="T:BsSnake.Contracts.SnakeDto">
+            <summary>
+            Informace o hadovi.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.Id">
+            <summary>
+            Jedinečný identifikátor hada v rámci hry.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.Name">
+            <summary>
+            Název hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.Url">
+            <summary>
+            Url adresa hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.Head">
+            <summary>
+            Pozice hlavy.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.Body">
+            <summary>
+            Pozice jednotlivých článků těla kromě hlavy.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.Length">
+            <summary>
+            Délka hada včetně hlavy.
+            Had bez těla, tj. pouze s hlavou má délku 1.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.Energy">
+            <summary>
+            Energie hada.
+            Každým krokem se energie snižuje o 1.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.Alive">
+            <summary>
+            Zda je had naživu.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.Color">
+            <summary>
+            Barva hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.Latency">
+            <summary>
+            Průměrná latence hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.DeathCause">
+            <summary>
+            Důvod smrti hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Contracts.SnakeDto.DeathIteration">
+            <summary>
+            Iterace, ve které had zemřel.
+            </summary>
+        </member>
+    </members>
+</doc>

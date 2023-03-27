@@ -1,0 +1,436 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BsSnake.Core</name>
+    </assembly>
+    <members>
+        <member name="T:BsSnake.Core.Model.Board">
+            <summary>
+            Definuje hrací plochu.
+            Souřadnice [0,0] odpovídá levému dolnímu rohu.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Board.Width">
+            <summary>
+            Šířka hrací plochy.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Board.Height">
+            <summary>
+            Výška hrací plochy.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Board.Food">
+            <summary>
+            Seznam pozic s potravou na hrací ploše.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Board.Obstacles">
+            <summary>
+            Seznam pozic s překážkami na hrací ploše.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Board.Snakes">
+            <summary>
+            Seznam všech hadů na hrací ploše.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Board.AliveSnakes">
+            <summary>
+            Seznam živých hadů na hrací ploše.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Board.#ctor(System.Int32,System.Int32)">
+            <summary> ctor. </summary>
+            <param name="width"><inheritdoc cref="P:BsSnake.Core.Model.Board.Width"/></param>
+            <param name="height"><inheritdoc cref="P:BsSnake.Core.Model.Board.Height"/></param>
+        </member>
+        <member name="M:BsSnake.Core.Model.Board.AddSnake(BsSnake.Core.Model.ISnakeEngine,System.Int32,System.String,System.String)">
+            <summary>
+            Přidá hada na hrací plochu.
+            </summary>
+            <param name="snakeEngine">Engine hada.</param>
+            <param name="energy">Počáteční energie.</param>
+            <param name="name">Název hada.</param>
+            <param name="color">Barva  hada.</param>
+        </member>
+        <member name="M:BsSnake.Core.Model.Board.GetDto">
+            <summary>
+            Vrátí DTO s informacemi o hrací ploše.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Board.AddFood">
+            <summary>
+            Přidá potravu na náhodně vybrané volné pole.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Board.AddObstacle">
+            <summary>
+            Přidá překážku na náhodně vybrané volné pole.
+            </summary>
+        </member>
+        <member name="T:BsSnake.Core.Model.Coordinate">
+            <summary>
+            Definuje souřadnici na hrací ploše.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Coordinate.X">
+            <summary>
+            Pozice X.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Coordinate.Y">
+            <summary>
+            Pozice Y.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Coordinate.#ctor(System.Int32,System.Int32)">
+            <summary> ctor. </summary>
+            <param name="x"><inheritdoc cref="P:BsSnake.Core.Model.Coordinate.X"/></param>
+            <param name="y"><inheritdoc cref="P:BsSnake.Core.Model.Coordinate.Y"/></param>
+        </member>
+        <member name="M:BsSnake.Core.Model.Coordinate.Move(BsSnake.Contracts.Direction)">
+            <summary>
+            Posune souřadnici o jeden bod v zadaném směru.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Coordinate.GetDto">
+            <summary>
+            Vrátí DTO objekt souřadnice.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Coordinate.op_Equality(BsSnake.Core.Model.Coordinate,BsSnake.Core.Model.Coordinate)">
+            <summary>
+            Operátor ekvivalence.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Coordinate.op_Inequality(BsSnake.Core.Model.Coordinate,BsSnake.Core.Model.Coordinate)">
+            <summary>
+            Operátor neekvivalence.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Coordinate.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:BsSnake.Core.Model.Coordinate.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:BsSnake.Core.Model.Game">
+            <summary>
+            Definuje právě jednu hru.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Game.Board">
+            <summary>
+            Hrací plocha.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Game.#ctor(BsSnake.Core.Model.GameSettings,System.Collections.Generic.IReadOnlyList{BsSnake.Core.Model.SnakeDefinition})">
+            <summary> ctor. </summary>
+            <param name="settings">Nastavení hry.</param>
+            <param name="snakes">Seznam hadů ve hře.</param>
+        </member>
+        <member name="P:BsSnake.Core.Model.Game.Iteration">
+            <summary>
+            Aktuální iterace hry.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Game.Completed">
+            <summary>
+            Zda byla hra dokončena.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Game.CompletedText">
+            <summary>
+            Text popisující důvod ukončení hry.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Game.IterationHistory">
+            <summary>
+            Seznam stavů hry pro jednotlivé iterace.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Game.GetDto">
+            <summary>
+            Vrátí DTO hry.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Game.GetDto(BsSnake.Core.Model.Snake)">
+            <summary>
+            Vrátí DTO hry pro konkrétního hada.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Game.InitAsync">
+            <summary>
+            Provede inicializaci hry.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BsSnake.Core.Model.Game.MoveAsync">
+            <summary>
+            Provede jednu iteraci hry.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Game.SimulateRequestAsync(System.Int32)">
+            <summary>
+            Pro zadaný stav hry v dané iteraci odešle na všechny hady požadavek na směr pohybu. Pohyb však ve hře nevykoná.
+            </summary>
+            <param name="iterationIndex">Index iterace hry.</param>
+        </member>
+        <member name="T:BsSnake.Core.Model.GameSettings">
+            <summary>
+            Nastavení hry.
+            </summary>
+        </member>
+        <member name="F:BsSnake.Core.Model.GameSettings.AVERAGE_TIMEOUT">
+            <summary>
+            Průměrný dovolený timeout v milisekundách.
+            </summary>
+        </member>
+        <member name="F:BsSnake.Core.Model.GameSettings.MAXIMUM_TIMEOUT">
+            <summary>
+            Maximální dovolený timeout v milisekundách.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.GameSettings.Name">
+            <summary>
+            Název hry (nastavení).
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.GameSettings.BoardWidth">
+            <summary>
+            Šířka hrací plochy.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.GameSettings.BoardHeight">
+            <summary>
+            Výška hrací plochy.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.GameSettings.FoodProbability">
+            <summary>
+            Pravděpodobnost, že se v každé iteraci na volném políčku vytvoří jídlo.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.GameSettings.ObstacleProbability">
+            <summary>
+            Pravděpodobnost, že se v každé iteraci na volném políčku vytvoří překážka.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.GameSettings.AverageTimeout">
+            <summary>
+            Průměrný dovolený timeout v milisekundách.
+            Pokud je NULL použije se výchozí hodnota <see cref="F:BsSnake.Core.Model.GameSettings.AVERAGE_TIMEOUT"/>.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.GameSettings.MaximumTimeout">
+            <summary>
+            Maximální dovolený timeout v milisekundách.
+            Pokud je NULL použije se výchozí hodnota <see cref="F:BsSnake.Core.Model.GameSettings.MAXIMUM_TIMEOUT"/>.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.GameSettings.MaximumIterations">
+            <summary>
+            Maximální počet iterací, po jehož překročení dojde k ukončení hry.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.GameSettings.StartingEnergy">
+            <summary>
+            Počáteční energie hadů.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.GameSettings.FoodEnergy">
+            <summary>
+            Energie, kterou had získá po konzumaci.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.GameSettings.CreateDefault">
+            <summary>
+            Vytvoří výchozí sadu nastavení her.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.GameSettings.Load">
+            <summary>
+            Načte nastavení her ze souboru games.json.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.GameSettings.CreateAndSaveDefault">
+            <summary>
+            Vytvoří výchozí nastavení her a uloží je do souboru games.json.
+            </summary>
+        </member>
+        <member name="T:BsSnake.Core.Model.ISnakeEngine">
+            <summary>
+            Engine, který ovládá pohyb hada.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.ISnakeEngine.InitAsync(BsSnake.Contracts.GameDto,System.Threading.CancellationToken)">
+            <summary>
+            Řekne hadovi, aby se připravil na novou hru.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.ISnakeEngine.MoveAsync(BsSnake.Contracts.GameDto,System.Threading.CancellationToken)">
+            <summary>
+            Zeptá se hada, kterým směrem má pohnout.
+            </summary>
+        </member>
+        <member name="T:BsSnake.Core.Model.Snake">
+            <summary>
+            Definice hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.Id">
+            <summary>
+            Jedinečný identifikátor instance hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.Name">
+            <summary>
+            Název hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.Url">
+            <summary>
+            Url adresa hada (pokud se jedná o vzdáleného hada).
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.Alive">
+            <summary>
+            Zda je had živý.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.Energy">
+            <summary>
+            Energie hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.DeathCause">
+            <summary>
+            Příčina smrti hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.DeathIteration">
+            <summary>
+            Iterace, ve které došlo ke smrti hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.Latency">
+            <summary>
+            Průměrná latence při komunikaci s hadem.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.Body">
+            <summary>
+            Souřadnice těla hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.Head">
+            <summary>
+            Souřadnice hlavy hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.Length">
+            <summary>
+            Celková délka hada včetně hlavy.
+            Had bez těla (pouze hlava) má délku 1.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.Snake.Color">
+            <summary>
+            Barva hada.
+            Jedná se o html kód barvy.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Snake.#ctor(BsSnake.Core.Model.Coordinate,System.Int32,BsSnake.Core.Model.ISnakeEngine,System.String,System.String)">
+            <summary>
+            Vytvoří novou instanci hada.
+            </summary>
+            <param name="headPosition">Pozice hlavy.</param>
+            <param name="energy">Počáteční energie.</param>
+            <param name="engine">Engine, který ovládá hada.</param>
+            <param name="name">Název hada.</param>
+            <param name="color">Html barva hada.</param>
+        </member>
+        <member name="M:BsSnake.Core.Model.Snake.Kill(System.String,System.Int32)">
+            <summary>
+            Zabije hada.
+            </summary>
+            <param name="cause">Příčina smrti hada.</param>
+            <param name="iteration">Iterace, ve které došlo ke smrti hada.</param>
+        </member>
+        <member name="M:BsSnake.Core.Model.Snake.InitAsync(BsSnake.Core.Model.Game,System.Threading.CancellationToken)">
+            <summary>
+            Provede inicializaci hada.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Snake.MoveAsync(BsSnake.Core.Model.Game,System.Threading.CancellationToken)">
+            <summary>
+            Provede tah hada.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Snake.SimulateMoveAsync(BsSnake.Contracts.GameDto,System.Threading.CancellationToken)">
+            <summary>
+            Simuluje tah hada, tzn. dotáže se hada na jeho další směr, ale pozici hada ve hře neaktualizuje.
+            Určeno pro ladění hada.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Snake.Eat(System.Int32,System.Int32)">
+            <summary>
+            Informuje hada, že snědl jídlo se zadanou energií.
+            </summary>
+            <param name="count">Počet jídla, který had snědl.</param>
+            <param name="energy">Celková energie získaná snědením daného počtu jídla.</param>
+        </member>
+        <member name="M:BsSnake.Core.Model.Snake.GetDto">
+            <summary>
+            Vrátí DTO hada.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Snake.AddResponseTime(System.TimeSpan)">
+            <summary>
+            Přidá čas do průměrné latence.
+            </summary>
+        </member>
+        <member name="T:BsSnake.Core.Model.SnakeDefinition">
+            <summary>
+            Definice hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.SnakeDefinition.Name">
+            <summary>
+            Název hada.
+            </summary>
+        </member>
+        <member name="P:BsSnake.Core.Model.SnakeDefinition.Url">
+            <summary>
+            Url adresa hada.
+            </summary>
+        </member>
+        <member name="T:BsSnake.Core.Model.Snakes">
+            <summary>
+            Helper třída pro načítání a ukládání definic hadů.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Snakes.LoadSnakeDefinitions">
+            <summary>
+            Načte definice hadů ze souboru snakes.json.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.Model.Snakes.SaveSnakeDefinitions(System.Collections.Generic.IList{BsSnake.Core.Model.SnakeDefinition})">
+            <summary>
+            Uloží definice hadů do souboru snakes.json.
+            </summary>
+        </member>
+        <member name="T:BsSnake.Core.SnakeEngines.SimpleSnakeEngine">
+            <summary>
+            Jednoduchý engine, který ovládá hada.
+            </summary>
+        </member>
+        <member name="M:BsSnake.Core.SnakeEngines.SimpleSnakeEngine.MoveAsync(BsSnake.Contracts.GameDto,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:BsSnake.Core.SnakeEngines.SimpleSnakeEngine.InitAsync(BsSnake.Contracts.GameDto,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
