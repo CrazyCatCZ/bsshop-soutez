@@ -21,6 +21,7 @@ def move(game):
     #
 
     ALLOWED_DIRECTIONS = ['Right', 'Left', 'Up', 'Down']
+    NEXT_MOVE = random.choice(ALLOWED_DIRECTIONS)
     nearest_food_index = 0
     board = game['board']
     food = board['food']
@@ -30,7 +31,7 @@ def move(game):
     board_height = board['height']
     board_width = board['width']
 
-    my_snake = snakes[0]
+    my_snake = game['you']
     snakes_head = my_snake['head']
 
     border_x_right = board_height - 1
@@ -104,8 +105,26 @@ def move(game):
     #print(food)
     nearest_food()
 
-    #Go for nearest food
-    difference = snakes_head['x'] - food[nearest_food_index]
+    if len(food) != 0:
+        nearest_food_var = food[nearest_food_index]
+        #Go for nearest food on x
+        difference_x = snakes_head['x'] - nearest_food_var['x']
+        if difference_x != 0:
+            if difference_x < 0:
+                NEXT_MOVE = 'Right'
+            else:
+                NEXT_MOVE = 'Left'
 
-    # pro ukazku se vraci nahodny smer
-    return {'direction': random.choice(ALLOWED_DIRECTIONS)}
+        #Go for nearest food on y
+        difference_y = snakes_head['y'] - nearest_food_var['y']
+        if difference_y != 0:
+            if difference_y < 0:
+                NEXT_MOVE = 'Up'
+            else:
+                NEXT_MOVE = 'Down'
+        
+    if NEXT_MOVE in ALLOWED_DIRECTIONS:
+        return {'direction': NEXT_MOVE}
+    else:
+        return {'direction': random.choice(ALLOWED_DIRECTIONS)}
+    

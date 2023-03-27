@@ -10,5 +10,13 @@
   {
     "name": "Ukázkový had #3",
     "url": "http://127.0.0.1:6003"
+  },
+  {
+    "name": "Ukázkový had #4",
+    "url": "http://127.0.0.1:6012"
+  },
+  {
+    "name": "Ukázkový had #5",
+    "url": "http://127.0.0.1:6012"
   }
 ]
