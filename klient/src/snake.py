@@ -39,6 +39,8 @@ def move(game):
     border_y_up = board_width - 1
     border_y_down = 0
 
+
+    #Borders
     def move_is_border_x_right(): 
         return snakes_head['x'] == border_x_right
     
@@ -86,7 +88,7 @@ def move(game):
                 nearest_food_index = i
 
         print(f"Nearest food: {nearest_food_index}")
-
+    
     #Borders 
     if move_is_border_x_right():
         ALLOWED_DIRECTIONS.remove('Right')
@@ -100,9 +102,6 @@ def move(game):
     if move_is_border_y_down():
         ALLOWED_DIRECTIONS.remove('Down')
     
-    #print(board_height, board_width)
-    #print(snakes_head)
-    #print(food)
     nearest_food()
 
     if len(food) != 0:
@@ -122,7 +121,7 @@ def move(game):
                 NEXT_MOVE = 'Up'
             else:
                 NEXT_MOVE = 'Down'
-        
+    
     if NEXT_MOVE in ALLOWED_DIRECTIONS:
         return {'direction': NEXT_MOVE}
     else:
